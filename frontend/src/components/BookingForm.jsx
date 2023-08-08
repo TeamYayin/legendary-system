@@ -97,7 +97,7 @@ function BookingForm({
         //       onMakeBooking({ startDate, endDate, businessUnit, purpose, roomId, recurringData })
         //     }}
       >
-        <div className="content__calendar px-5">
+        <div className="content__calendar px-5 border-1 border-spacing-3 bg-cyan-100">
           <Datetime
             dateFormat="YYYY-MM-DD"
             timeFormat={false}
