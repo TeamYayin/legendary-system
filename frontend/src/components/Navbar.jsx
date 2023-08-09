@@ -1,5 +1,5 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 
 function NavBar() {
   // { signOut, loadMyBookings, user }
@@ -7,7 +7,7 @@ function NavBar() {
     <nav className="flex justify-end p-5 bg-cyan-800 text-white">
       <div className="flex">
         <div>
-          <Link to="/" className="p-2 font-bold text-xl">
+          <Link to="/booking" className="p-2 font-bold text-xl">
             Book a Room
           </Link>
         </div>
