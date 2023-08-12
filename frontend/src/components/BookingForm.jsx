@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 import BookingFormTable from './BookingFormTable';
 import Datetime from 'react-datetime';
 import moment from 'moment';
@@ -25,6 +25,7 @@ function BookingForm({
   const valid = function (current) {
     return current.day() !== 0;
   };
+  const [selectedDate, setSelectedDate] = useState(null);
 
   const handleEndDate = (dateArray) => {
     let recurringEndDate = [];
@@ -48,6 +49,21 @@ function BookingForm({
 
   // Array used for handleData function
   let dateArray = [];
+  const handleDateClick = (selectedMoment) => {
+    setSelectedDate(selectedMoment);
+  };
+
+  const renderDay = (props, currentDate, selectedDate) => {
+    // Customize the rendering of each day
+    const isSelected = selectedDate && currentDate.isSame(selectedDate, 'day');
+    return (
+      <td {...props} onClick={() => handleDateClick(currentDate)}>
+        <span className={isSelected ? 'highlighted' : ''}>
+          {currentDate.date()}
+        </span>
+      </td>
+    );
+  };
 
   // Update the current date in the application state
   const handleDate = (event) => {
@@ -97,14 +113,19 @@ function BookingForm({
         //       onMakeBooking({ startDate, endDate, businessUnit, purpose, roomId, recurringData })
         //     }}
       >
-        <div className="content__calendar px-5 border-1 border-spacing-3 bg-cyan-100">
+        <div className="content__calendar mx-2 px-5 border-1 border-spacing-3 bg-cyan-100">
           <Datetime
             dateFormat="YYYY-MM-DD"
             timeFormat={false}
             input={false}
             utc={true}
             isValidDate={valid}
-            onChange={(event) => handleDate(event._d)}
+            renderDay={(props, currentDate) =>
+              renderDay(props, moment(currentDate), selectedDate)
+            }
+            value={selectedDate}
+            // onChange={(event) => handleDate(event._d)}
+            className="px-3 cursor-pointer"
           />
         </div>
         {/* <div className="content__table"> */}
