@@ -1,5 +1,4 @@
 import React, { Fragment, useState } from 'react';
-import BookingFormTable from './BookingFormTable';
 import Datetime from 'react-datetime';
 import moment from 'moment';
 import { Link } from 'react-router-dom';
@@ -10,7 +9,7 @@ import {
   endTimeSelectOptions,
 } from '../helpers/bookingForm';
 import './bookingForm.css';
-import BookingTable from './BookingTable';
+import BookingTable from './BookingTable.jsx';
 
 function BookingForm({
   //   onMakeBooking,
