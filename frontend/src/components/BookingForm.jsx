@@ -10,6 +10,7 @@ import {
   endTimeSelectOptions,
 } from '../helpers/bookingForm';
 import './bookingForm.css';
+import BookingTable from './BookingTable';
 
 function BookingForm({
   //   onMakeBooking,
@@ -84,35 +85,7 @@ function BookingForm({
       <div className="header__page">
         <h2 className="header__heading header__heading--sub">Level 1 | 104</h2>
       </div>
-      <form
-        className="form__grid form--booking"
-        //    onSubmit={event => {
-        //       event.preventDefault()
-        //       // Extract date array from current date in state
-        //       const dateArray = moment(date)
-        //         .format('Y M D')
-        //         .split(' ')
-        //         .map(item => parseInt(item, 10))
-        //         dateArray[1] = dateArray[1] - 1
-        //         // Data from input
-        //         const formData = event.target.elements
-        //         const roomId = roomData._id
-        //         // startDate data
-        //         const startTime = formatTime(formData.startTime.value)
-        //         const startDate = [...dateArray, ...startTime]
-        //         // endDate data
-        //         const endTime = formatTime(formData.endTime.value)
-        //         const endDate = [...dateArray, ...endTime]
-        //         // Booking specifics
-        //         const businessUnit = formData.business.value
-        //         let recurringEnd = handleEndDate(formData.recurringEndDate.value.split('-'))
-        //         const recurringType = formData.recurring.value
-        //         let recurringData = handleRecurringData(recurringType, recurringEnd)
-        //         const purpose = formData.purpose.value
-        //         const description = formData.description.value
-        //       onMakeBooking({ startDate, endDate, businessUnit, purpose, roomId, recurringData })
-        //     }}
-      >
+      <form className="form__grid form--booking justify-center">
         <div className="content__calendar mx-2 px-5 border-1 border-spacing-3 bg-cyan-100">
           <Datetime
             dateFormat="YYYY-MM-DD"
@@ -128,13 +101,9 @@ function BookingForm({
             className="px-3 cursor-pointer"
           />
         </div>
-        {/* <div className="content__table"> */}
-        {/* <BookingFormTable
-            //    roomData={roomData}
-            date={date}
-            //  onShowBooking={onShowBooking}
-          /> */}
-        {/* </div> */}
+        <div className="content__table">
+          <BookingTable selectedDate={selectedDate} />
+        </div>
         <div className="content__form">
           <h3 className="header__heading header__heading--column">
             Make a Booking
